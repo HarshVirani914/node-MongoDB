@@ -12,7 +12,12 @@ app.use(json());
 app.use(urlencoded({ extended: true }));
 app.use(morgan("dev"));
 
-app.get("/data", (req, res) => {
+const log = (req, res, next) => {
+  console.log("Logging...");
+  next();
+};
+
+app.get("/data", log, (req, res) => {
   res.send({ msg: "Hello World!" });
 });
 
