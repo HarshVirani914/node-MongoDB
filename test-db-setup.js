@@ -1,16 +1,15 @@
 import mongoose from "mongoose";
 import cuid from "cuid";
 import _ from "lodash";
+import dotenv from "dotenv";
 import { Item } from "./src/resources/item/item.model";
 import { List } from "./src/resources/list/list.model";
 import { User } from "./src/resources/user/user.model";
 
-const models = { User, List, Item };
+dotenv.config();
 
-const url =
-  process.env.MONGODB_URI ||
-  process.env.DB_URL ||
-  "mongodb+srv://root:root@cluster0.mrsluyn.mongodb.net/node-MongoDB";
+const models = { User, List, Item };
+const url = process.env.MONGODB_URI || process.env.DB_URL;
 
 global.newId = () => {
   return mongoose.Types.ObjectId();

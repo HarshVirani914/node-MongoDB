@@ -4,10 +4,13 @@ import morgan from "morgan";
 import config from "./config";
 import cors from "cors";
 import { signup, signin, protect } from "./utils/auth";
+import dotenv from "dotenv";
 import { connect } from "./utils/db";
 import userRouter from "./resources/user/user.router";
 import itemRouter from "./resources/item/item.router";
 import listRouter from "./resources/list/list.router";
+
+dotenv.config();
 
 export const app = express();
 
@@ -28,9 +31,7 @@ app.use("/api/list", listRouter);
 
 export const start = async () => {
   try {
-    await connect(
-      "mongodb+srv://root:root@cluster0.mrsluyn.mongodb.net/node-MongoDB?retryWrites=true&w=majority"
-    );
+    await connect(process.env.DB_URL + "?retryWrites=true&w=majority");
     app.listen(config.port, () => {
       console.log(`REST API on http://localhost:${config.port}/api`);
     });
