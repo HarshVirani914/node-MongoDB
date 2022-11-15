@@ -1,9 +1,8 @@
-import mongoose from 'mongoose'
-import options from '../config'
+import mongoose from "mongoose";
 
-export const connect = (url = options.dbUrl, opts = {}) => {
+export const connect = (url, opts = {}) => {
   return mongoose.connect(
     url,
     { ...opts, useNewUrlParser: true }
-  )
-}
+  );
+};

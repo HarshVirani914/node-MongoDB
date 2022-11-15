@@ -28,7 +28,9 @@ app.use("/api/list", listRouter);
 
 export const start = async () => {
   try {
-    await connect();
+    await connect(
+      "mongodb+srv://root:root@cluster0.mrsluyn.mongodb.net/node-MongoDB?retryWrites=true&w=majority"
+    );
     app.listen(config.port, () => {
       console.log(`REST API on http://localhost:${config.port}/api`);
     });

@@ -11,10 +11,10 @@ const itemSchema = new mongoose.Schema(
     status: {
       type: String,
       required: true,
-      enum: ["active", "completed", "pastdue"],
+      enum: ["active", "complete", "pastdue"],
       default: "active",
     },
-    note: String,
+    notes: String,
     due: Date,
     createdBy: {
       type: mongoose.Schema.Types.ObjectId,
